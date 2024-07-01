@@ -1,0 +1,33 @@
+{
+    "name": "ifelsedo/activity-log",
+    "alias": "",
+    "description": "基于laravel-activitylog的操作日志扩展",
+    "type": "library",
+    "keywords": ["dcat-admin", "extension"],
+    "homepage": "https://github.com/ifelsedo/dcat-admin-activity-log",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mikenut",
+            "email": "mkenut@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.0",
+        "dcat/laravel-admin": "~2.0",
+        "spatie/laravel-activitylog": "3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ifelsedo\\ActivityLog\\": "src/"
+        }
+    },
+    "extra": {
+        "dcat-admin": "Ifelsedo\\ActivityLog\\ActivityLogServiceProvider",
+        "laravel": {
+            "providers": [
+                "Ifelsedo\\ActivityLog\\ActivityLogServiceProvider"
+            ]
+        }
+    }
+}
