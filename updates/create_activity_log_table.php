@@ -15,10 +15,10 @@ class CreateActivityLogTable extends Migration
     {
         Schema::create('admin_activity_log', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('log_name')->nullable();
-            $table->text('description');
+            $table->string('log_name', 30)->nullable();
+            $table->string('description', 50);
             $table->nullableMorphs('subject', 'subject');
-            $table->string('event')->nullable();
+            $table->string('event', 20)->nullable();
             $table->nullableMorphs('causer', 'causer');
             $table->json('properties')->nullable();
             $table->uuid('batch_uuid')->nullable();

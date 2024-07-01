@@ -3,7 +3,6 @@
 namespace Ifelsedo\ActivityLog;
 
 use Dcat\Admin\Extend\ServiceProvider;
-use Dcat\Admin\Admin;
 
 class ActivityLogServiceProvider extends ServiceProvider
 {
@@ -14,23 +13,10 @@ class ActivityLogServiceProvider extends ServiceProvider
 		'css/jquery.json-viewer.css',
 	];
 
-	public function register()
-	{
-		//
-	}
-
-	public function init()
-	{
-		parent::init();
-
-		//
-
-	}
-
     // 定义菜单
     protected $menu = [
         [
-            'title' => 'Activity Log',
+            'title' => 'Activity Logs',
             'uri'   => 'auth/activity-logs',
             'icon'  => '', // 图标可以留空
         ],
