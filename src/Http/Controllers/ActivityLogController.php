@@ -3,6 +3,7 @@
 namespace Ifelsedo\ActivityLog\Http\Controllers;
 
 use Dcat\Admin\Grid;
+use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Http\JsonResponse;
 use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Admin;
@@ -10,15 +11,17 @@ use Illuminate\Routing\Controller;
 use Ifelsedo\ActivityLog\ActivityLogServiceProvider;
 use Ifelsedo\ActivityLog\Models\ActivityLog;
 
-class ActivityLogController extends Controller
+class ActivityLogController extends AdminController
 {
-    public function index(Content $content)
-    {
-        return $content
-            ->title(ActivityLogServiceProvider::trans('log.title'))
-            ->description(trans('admin.list'))
-            ->body($this->grid());
-    }
+    // public function index(Content $content)
+    // {
+    //     return $content
+    //         ->title(ActivityLogServiceProvider::trans('activity-log.title'))
+    //         ->description(trans('admin.list'))
+    //         ->body($this->grid());
+    // }
+
+    protected $translation = 'activity-log';
 
     protected function grid()
     {
@@ -44,18 +47,21 @@ JS
             $grid->column('created_at');
             // $grid->column('updated_at')->sortable();
 
+            $grid->toolsWithOutline(false); // 工具栏
             $grid->disableCreateButton();
             $grid->disableQuickEditButton();
             $grid->disableEditButton();
             $grid->disableViewButton();
-            $grid->showColumnSelector();
-            $grid->setActionClass(Grid\Displayers\Actions::class);
+            // $grid->showColumnSelector();
+            // $grid->setActionClass(Grid\Displayers\Actions::class);
 
             $grid->model()->orderBy('id', 'desc');
+            $grid->quickSearch();
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->like('log_name', 'log_name');
-                $filter->like('description', 'description');
-                $filter->between('created_at')->datetime();
+                $filter->equal('log_name');
+                $filter->equal('subject_id');
+                $filter->equal('causer_id');
+                // $filter->between('created_at')->datetime();
             });
         });
     }

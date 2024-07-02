@@ -16,13 +16,16 @@ trait LogsActivityTrait
         $description = '';
         switch ($eventName) {
             case 'created':
-                $description = '管理员' . Auth('admin')->user()->username . '添加了' . $this->table . '表id为' . $this->id . '的数据';
+                $description = Auth('admin')->user()->name . '新增记录#id:' . $this->id;
                 break;
             case 'updated':
-                $description = '管理员' . Auth('admin')->user()->username . '修改了' . $this->table . '表id为' . $this->id . '的数据';
+                $description = Auth('admin')->user()->name . '修改数据#id:' . $this->id;
                 break;
             case 'deleted':
-                $description = '管理员' . Auth('admin')->user()->username . '删除了' . $this->table . '表id为' . $this->id . '的数据';
+                $description = Auth('admin')->user()->name . '删除数据#id:' . $this->id;
+                break;
+            default:
+                $description = Auth('admin')->user()->name . '其他操作#id:' . $this->id;
                 break;
         }
         return $description;
@@ -30,7 +33,8 @@ trait LogsActivityTrait
 
     protected function getLogName(): string
     {
-        return $this->logName ?: strtolower(class_basename($this));
+        // return $this->logName ?: strtolower(class_basename($this));
+        return $this->logName ?: $this->table;
     }
 
     protected function getActivitylogOptions(): LogOptions

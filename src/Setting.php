@@ -8,7 +8,7 @@ class Setting extends Form
 {
     public function title()
     {
-        return $this->trans('log.title');
+        return $this->trans('activity-log.title');
     }
 
     public function form()

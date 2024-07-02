@@ -11,4 +11,14 @@ return [
         'balabala...',
         'create_activity_log_table.php',
     ],
+    '0.0.3' => [
+        '优化代码结构，增加注释，优化命名，优化日志记录，新增语言包',
+        '优化表结构',
+        'create_activity_log_table.php',
+    ],
+    '0.0.4' => [
+        '优化表结构',
+        'balabala...',
+        'create_activity_log_table.php',
+    ],
 ];
