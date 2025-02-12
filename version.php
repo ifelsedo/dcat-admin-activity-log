@@ -26,4 +26,9 @@ return [
         '1111',
         'create_activity_log_table.php',
     ],
+    '0.0.6' => [
+        '优化表结构',
+        'balabala...',
+        'create_activity_log_table.php',
+    ],
 ];
