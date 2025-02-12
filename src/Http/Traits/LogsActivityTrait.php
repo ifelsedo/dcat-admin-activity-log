@@ -14,18 +14,24 @@ trait LogsActivityTrait
     protected function getDescriptionForEvent(string $eventName): string
     {
         $description = '';
+        $admin = '';
+        if ($user = Auth('admin')->user()) {
+            $admin = $user->name;
+        } else {
+            $admin = 'system';
+        }
         switch ($eventName) {
             case 'created':
-                $description = Auth('admin')->user()->name . '新增记录#id:' . $this->id;
+                $description = $admin . '新增记录#id:' . $this->id;
                 break;
             case 'updated':
-                $description = Auth('admin')->user()->name . '修改数据#id:' . $this->id;
+                $description = $admin . '修改数据#id:' . $this->id;
                 break;
             case 'deleted':
-                $description = Auth('admin')->user()->name . '删除数据#id:' . $this->id;
+                $description = $admin . '删除数据#id:' . $this->id;
                 break;
             default:
-                $description = Auth('admin')->user()->name . '其他操作#id:' . $this->id;
+                $description = $admin . '其他操作#id:' . $this->id;
                 break;
         }
         return $description;

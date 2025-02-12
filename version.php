@@ -21,4 +21,9 @@ return [
         'balabala...',
         'create_activity_log_table.php',
     ],
+    '0.0.5' => [
+        '解决当进行系统计划任务时无管理员的情况下，无法正常记录日志的问题',
+        '1111',
+        'create_activity_log_table.php',
+    ],
 ];
