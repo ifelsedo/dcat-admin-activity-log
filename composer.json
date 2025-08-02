@@ -14,7 +14,6 @@
     ],
     "require": {
         "php": "^8.0",
-        "printnow/laravel-admin": "~2.0",
         "spatie/laravel-activitylog": "4.*"
     },
     "autoload": {
